@@ -30,16 +30,21 @@ npm install
 ### Backend
 
 1.  Create a `.env` file in the `backend/` directory.
-2.  Add the following environment variables:
+2.  Add the following environment variables. **Note:** The `SECRET_KEY` is critical for security.
 
     ```
     SECRET_KEY='your-strong-secret-key'
     DEBUG=True
     ```
 
+    To generate a new secret key, you can run the following command:
+    ```bash
+    python -c 'from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())'
+    ```
+
 ### Frontend
 
-1.  Create a `.env` file in the `frontend/` directory.
+1.  Create a `.env.local` file in the `frontend/` directory.
 2.  Add the following environment variables:
 
     ```
