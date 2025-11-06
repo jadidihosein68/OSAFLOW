@@ -43,7 +43,7 @@ npm install
 2.  Add the following environment variables:
 
     ```
-    NEXT_PUBLIC_API_URL=http://localhost:8000/api
+    NEXT_PUBLIC_API_URL=http://localhost:8000
     ```
 
 ## 4. Running the Application

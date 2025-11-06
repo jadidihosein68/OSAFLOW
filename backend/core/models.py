@@ -36,7 +36,11 @@ class Contact(models.Model):
 class Template(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=255)
-    content = models.TextField()
+    category = models.CharField(max_length=255, blank=True)
+    language = models.CharField(max_length=255, blank=True)
+    header = models.CharField(max_length=255, blank=True)
+    body = models.TextField()
+    footer = models.CharField(max_length=255, blank=True)
     is_ai_generated = models.BooleanField(default=False)
 
 class Campaign(models.Model):

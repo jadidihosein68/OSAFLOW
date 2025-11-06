@@ -33,7 +33,7 @@ class SegmentSerializer(serializers.ModelSerializer):
 class TemplateSerializer(serializers.ModelSerializer):
     class Meta:
         model = Template
-        fields = '__all__'
+        fields = ('id', 'name', 'category', 'language', 'header', 'body', 'footer', 'is_ai_generated')
 
 class CampaignSerializer(serializers.ModelSerializer):
     class Meta:
