@@ -6,43 +6,61 @@ export default function DashboardLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="flex h-screen">
-      <aside className="w-64 bg-gray-800 text-white">
-        <div className="p-4">
-          <h1 className="text-2xl font-bold">OSAFlow Lite</h1>
+    <div className="flex h-screen bg-gray-100">
+      <aside className="w-64 bg-white shadow-md">
+        <div className="p-4 border-b">
+          <h1 className="text-2xl font-bold text-indigo-600">OSAFlow</h1>
         </div>
         <nav className="mt-4">
           <ul>
             <li>
-              <Link
-                href="/dashboard"
-                className="block p-4 hover:bg-gray-700"
-              >
+              <Link href="/dashboard" className="block p-4 hover:bg-gray-200">
                 Dashboard
               </Link>
             </li>
             <li>
-              <Link
-                href="/dashboard/contacts"
-                className="block p-4 hover:bg-gray-700"
-              >
-                Contacts
+              <Link href="/dashboard/chats" className="block p-4 hover:bg-gray-200">
+                Chats
               </Link>
             </li>
             <li>
-              <Link
-                href="/dashboard/templates"
-                className="block p-4 hover:bg-gray-700"
-              >
-                Templates
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/dashboard/campaigns"
-                className="block p-4 hover:bg-gray-700"
-              >
+              <Link href="/dashboard/campaigns" className="block p-4 hover:bg-gray-200">
                 Campaigns
+              </Link>
+            </li>
+            <li>
+              <Link href="/dashboard/templates" className="block p-4 hover:bg-gray-200">
+                Message Template
+              </Link>
+            </li>
+            <li>
+              <Link href="/dashboard/automation" className="block p-4 hover:bg-gray-200">
+                Automation
+              </Link>
+            </li>
+            <li>
+              <Link href="/dashboard/team" className="block p-4 hover:bg-gray-200">
+                Team
+              </Link>
+            </li>
+            <li>
+              <Link href="/dashboard/settings" className="block p-4 hover:bg-gray-200">
+                Settings
+              </Link>
+            </li>
+            <li>
+              <Link href="/dashboard/billing" className="block p-4 hover:bg-gray-200">
+                Billing and Subscription
+              </Link>
+            </li>
+            <li>
+              <Link href="/dashboard/support" className="block p-4 hover:bg-gray-200">
+                Support
+              </Link>
+            </li>
+            <li>
+              <Link href="/dashboard/developer" className="block p-4 hover:bg-gray-200">
+                Developer Tools
               </Link>
             </li>
           </ul>

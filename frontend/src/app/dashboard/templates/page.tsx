@@ -1,11 +1,16 @@
+import Link from 'next/link';
+
 export default function TemplatesPage() {
   return (
     <div>
       <div className="flex justify-between items-center">
         <h2 className="text-2xl font-bold">Templates</h2>
-        <button className="bg-indigo-600 text-white px-4 py-2 rounded-md">
+        <Link
+          href="/dashboard/templates/new"
+          className="bg-indigo-600 text-white px-4 py-2 rounded-md"
+        >
           Create Template
-        </button>
+        </Link>
       </div>
       <div className="mt-8">
         <table className="w-full">
