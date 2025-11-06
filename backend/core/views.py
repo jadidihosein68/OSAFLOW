@@ -9,6 +9,7 @@ class UserViewSet(viewsets.ModelViewSet):
     permission_classes = [IsAuthenticated]
 
 class ContactViewSet(viewsets.ModelViewSet):
+    queryset = Contact.objects.all()
     serializer_class = ContactSerializer
     permission_classes = [IsAuthenticated]
 
@@ -19,6 +20,7 @@ class ContactViewSet(viewsets.ModelViewSet):
         serializer.save(user=self.request.user)
 
 class SegmentViewSet(viewsets.ModelViewSet):
+    queryset = Segment.objects.all()
     serializer_class = SegmentSerializer
     permission_classes = [IsAuthenticated]
 
@@ -29,6 +31,7 @@ class SegmentViewSet(viewsets.ModelViewSet):
         serializer.save(user=self.request.user)
 
 class TemplateViewSet(viewsets.ModelViewSet):
+    queryset = Template.objects.all()
     serializer_class = TemplateSerializer
     permission_classes = [IsAuthenticated]
 
@@ -39,6 +42,7 @@ class TemplateViewSet(viewsets.ModelViewSet):
         serializer.save(user=self.request.user)
 
 class CampaignViewSet(viewsets.ModelViewSet):
+    queryset = Campaign.objects.all()
     serializer_class = CampaignSerializer
     permission_classes = [IsAuthenticated]
 
