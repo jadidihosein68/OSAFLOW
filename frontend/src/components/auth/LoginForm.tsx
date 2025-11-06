@@ -15,7 +15,7 @@ export default function LoginForm() {
       const response = await axios.post(
         'http://localhost:8000/api/auth/login/',
         {
-          username: email,
+          email,
           password,
         }
       );
