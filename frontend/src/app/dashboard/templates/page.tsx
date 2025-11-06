@@ -1,6 +1,39 @@
+'use client';
+
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 import Link from 'next/link';
 
+interface Template {
+  id: number;
+  name: string;
+  body: string;
+}
+
 export default function TemplatesPage() {
+  const [templates, setTemplates] = useState<Template[]>([]);
+
+  useEffect(() => {
+    const fetchTemplates = async () => {
+      try {
+        const token = localStorage.getItem('token');
+        const response = await axios.get(
+          `${process.env.NEXT_PUBLIC_API_URL}/api/v1/templates/`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+        setTemplates(response.data);
+      } catch (error) {
+        console.error('Failed to fetch templates:', error);
+      }
+    };
+
+    fetchTemplates();
+  }, []);
+
   return (
     <div>
       <div className="flex justify-between items-center">
@@ -21,13 +54,12 @@ export default function TemplatesPage() {
             </tr>
           </thead>
           <tbody>
-            {/* Placeholder data */}
-            <tr>
-              <td className="p-2">Follow-up Greeting</td>
-              <td className="p-2">
-                Hi name, just checking if you had a chance to view project…
-              </td>
-            </tr>
+            {templates.map((template) => (
+              <tr key={template.id}>
+                <td className="p-2">{template.name}</td>
+                <td className="p-2">{template.body}</td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>
