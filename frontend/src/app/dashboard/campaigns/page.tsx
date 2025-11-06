@@ -1,11 +1,51 @@
+'use client';
+
+import { useState, useEffect } from 'react';
+import axios from 'axios';
+import Link from 'next/link';
+
+interface Campaign {
+  id: number;
+  name: string;
+  template: number;
+  scheduled_at: string;
+  status: string;
+}
+
 export default function CampaignsPage() {
+  const [campaigns, setCampaigns] = useState<Campaign[]>([]);
+
+  useEffect(() => {
+    const fetchCampaigns = async () => {
+      try {
+        const token = localStorage.getItem('token');
+        const response = await axios.get(
+          `${process.env.NEXT_PUBLIC_API_URL}/api/v1/campaigns/`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+        setCampaigns(response.data);
+      } catch (error) {
+        console.error('Failed to fetch campaigns:', error);
+      }
+    };
+
+    fetchCampaigns();
+  }, []);
+
   return (
     <div>
       <div className="flex justify-between items-center">
         <h2 className="text-2xl font-bold">Campaigns</h2>
-        <button className="bg-indigo-600 text-white px-4 py-2 rounded-md">
+        <Link
+          href="/dashboard/campaigns/new"
+          className="bg-indigo-600 text-white px-4 py-2 rounded-md"
+        >
           Create Campaign
-        </button>
+        </Link>
       </div>
       <div className="mt-8">
         <table className="w-full">
@@ -18,13 +58,14 @@ export default function CampaignsPage() {
             </tr>
           </thead>
           <tbody>
-            {/* Placeholder data */}
-            <tr>
-              <td className="p-2">New Listing Campaign</td>
-              <td className="p-2">New Listing</td>
-              <td className="p-2">2024-12-01 10:00 AM</td>
-              <td className="p-2">Sent</td>
-            </tr>
+            {campaigns.map((campaign) => (
+              <tr key={campaign.id}>
+                <td className="p-2">{campaign.name}</td>
+                <td className="p-2">{campaign.template}</td>
+                <td className="p-2">{new Date(campaign.scheduled_at).toLocaleString()}</td>
+                <td className="p-2">{campaign.status}</td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>
