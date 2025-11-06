@@ -30,8 +30,7 @@ It integrates with WhatsApp Business API, allows CSV contact uploads, supports s
 
 | Layer | Stack |
 |-------|-------|
-| **Frontend** | React (Next.js) + Tailwind CSS |
-| **Backend** | Python (Djungo) |
+
 | **Database** | PostgreSQL |
 | **Messaging Integration** | WhatsApp Business Cloud API |
 | **File Storage** | local file |
@@ -42,6 +41,10 @@ It integrates with WhatsApp Business API, allows CSV contact uploads, supports s
 | **Monitoring** | Azure Monitor + App Insights |
 | both front end and backend on the same code base separate Frontend and backend in different folder|
 
+backend/: Django project configured for SQLite + REST API (core app).
+frontend/: React (Vite + TypeScript) single-page app that consumes the API. Mobile responcive
+Project.md: Product requirements source.
+docs/TUTORIAL.md: Step-by-step guide to install, configure, and operate the app.
 ---
 
 ## 4. Functional Requirements
@@ -61,6 +64,7 @@ It integrates with WhatsApp Business API, allows CSV contact uploads, supports s
 | Feature | Description |
 |----------|--------------|
 | CSV Upload | User uploads a CSV file with columns (name, phone, category). |
+| JSON Update |User uploads a JSON file (name, phone, category). |
 | Auto-Categorization | System reads `category` field to create segments (Buyers, Sellers, etc.). |
 | Segment Management | User can create new segments, edit, or delete them. |
 | Segment Selection | User selects segments to include/exclude from a campaign. |
@@ -72,8 +76,7 @@ It integrates with WhatsApp Business API, allows CSV contact uploads, supports s
 | Feature | Description |
 |----------|--------------|
 | Static Template Creation | User creates message templates with variables like {{name}}. |
-| Template Library | List of all saved templates per user. |
-| AI Template Assistant (optional) | Uses OpenAI API to suggest or improve templates based on category (context). |
+| Template Library | List of all saved templates per user by version. |
 
 ---
 
@@ -81,7 +84,7 @@ It integrates with WhatsApp Business API, allows CSV contact uploads, supports s
 
 | Feature | Description |
 |----------|--------------|
-| Create Campaign | User names the campaign, selects template and segments. |
+| Create Campaign | User names the campaign, selects the template, and segments. |
 | Scheduling | Choose a specific date/time or immediate send. |
 | Message Dispatch | Backend calls WhatsApp Business API per recipient with personalized variables. |
 | Attachment Option | Optional Drive file link attachment (if integrated). |
