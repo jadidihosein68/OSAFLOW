@@ -31,14 +31,16 @@ It integrates with WhatsApp Business API, allows CSV contact uploads, supports s
 | Layer | Stack |
 |-------|-------|
 | **Frontend** | React (Next.js) + Tailwind CSS |
-| **Backend** | Node.js (Express or NestJS) |
+| **Backend** | Python (Djungo) |
 | **Database** | PostgreSQL |
 | **Messaging Integration** | WhatsApp Business Cloud API |
-| **File Storage** | Google Drive API |
+| **File Storage** | local file |
+| **File Storage Integration** | Google Drive API |
 | **Calendar Integration** | Google Calendar API (OAuth 2.0) |
-| **Auth** | Firebase Authentication (Google / Email) |
-| **Hosting** | Azure App Service (Linux) |
+| **Auth** | Google / Email |
+| **Hosting** | VM (Linux) |
 | **Monitoring** | Azure Monitor + App Insights |
+| both front end and backend on the same code base separate Frontend and backend in different folder|
 
 ---
 
