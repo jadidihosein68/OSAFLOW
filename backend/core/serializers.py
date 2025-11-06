@@ -24,18 +24,22 @@ class ContactSerializer(serializers.ModelSerializer):
     class Meta:
         model = Contact
         fields = '__all__'
+        read_only_fields = ('user',)
 
 class SegmentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Segment
         fields = '__all__'
+        read_only_fields = ('user',)
 
 class TemplateSerializer(serializers.ModelSerializer):
     class Meta:
         model = Template
         fields = ('id', 'name', 'category', 'language', 'header', 'body', 'footer', 'is_ai_generated')
+        read_only_fields = ('user',)
 
 class CampaignSerializer(serializers.ModelSerializer):
     class Meta:
         model = Campaign
-        fields = '__all__'
+        fields = ('id', 'name', 'template', 'scheduled_at', 'status')
+        read_only_fields = ('user',)
